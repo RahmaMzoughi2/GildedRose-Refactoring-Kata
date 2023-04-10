@@ -26,6 +26,13 @@ class GildedRoseTest {
         GildedRose app = initGildedRoseTest(FOO, 2, 10);
         assertEquals(9, app.getItems()[0].quality);
     }
+    @Test
+    void testNormalProduct_toString() {
+        GildedRose app = initGildedRoseTest(FOO, 3, 9);
+        assertEquals(8, app.getItems()[0].quality);
+        assertEquals(2, app.getItems()[0].sellIn);
+        assertEquals("foo, 2, 8", app.getItems()[0].toString());
+    }
 
     @Test
     void testNormalProduct_WhenSellInPassed_QualityShouldDecreaseTwice() {
@@ -105,5 +112,4 @@ class GildedRoseTest {
         assertEquals(19, app.getItems()[0].sellIn);
         assertEquals(12, app.getItems()[0].quality);
     }
-
 }
