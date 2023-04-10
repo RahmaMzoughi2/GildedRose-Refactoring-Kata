@@ -3,6 +3,11 @@ package com.gildedrose;
 import java.util.Arrays;
 
 class GildedRose {
+    public static final int SELLIN_DATE_ZERO = 0;
+    public static final int SELLIN_DATE_FIVE = 5;
+    public static final int SELLIN_DATE_TEN = 10;
+    public static final int QUALITY_STEP_THREE = 3;
+    public static final int QUALITY_STEP_TWO = 2;
     private Item[] items;
 
     public GildedRose(Item[] items) {
@@ -17,16 +22,16 @@ class GildedRose {
             int minQuality = enumItem.getMinQuality();
 
             if (EnumItem.BACKSTAGE.equals(enumItem)) {
-                if (item.sellIn <= 0) {
-                    maxQuality = 0; //Quality drops to 0 after the concert
-                } else if (item.sellIn < 6) {
-                    qualityValue = 3; //Quality increases by 3 when there are 5 days or less
-                } else if (item.sellIn < 11) {
-                    qualityValue = 2; //Quality increases by 2 when there are 10 days or less
+                if (item.sellIn <= SELLIN_DATE_ZERO) {
+                    maxQuality = SELLIN_DATE_ZERO; //Quality drops to 0 after the concert
+                } else if (item.sellIn <= SELLIN_DATE_FIVE) {
+                    qualityValue = QUALITY_STEP_THREE; //Quality increases by 3 when there are 5 days or less
+                } else if (item.sellIn <= SELLIN_DATE_TEN) {
+                    qualityValue = QUALITY_STEP_TWO; //Quality increases by 2 when there are 10 days or less
                 }
 
-            } else if (EnumItem.OTHER.equals(enumItem) && item.sellIn <= 0) {
-                qualityValue = -2; //Once the sell by date has passed, Quality degrades twice as fast
+            } else if (EnumItem.OTHER.equals(enumItem) && item.sellIn <= SELLIN_DATE_ZERO) {
+                qualityValue = -QUALITY_STEP_TWO; //Once the sell by date has passed, Quality degrades twice as fast
             }
 
             if (!enumItem.isLegendary()) {
