@@ -99,4 +99,11 @@ class GildedRoseTest {
         assertEquals(0, app.getItems()[0].quality);
     }
 
+    @Test
+    void testConjuredItems_WhenUpdate_QualityShouldDegradeTwice() {
+        GildedRose app = initGildedRoseTest(CONJURED_ITEM, 20, 14);
+        assertEquals(19, app.getItems()[0].sellIn);
+        assertEquals(12, app.getItems()[0].quality);
+    }
+
 }
