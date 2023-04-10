@@ -10,6 +10,7 @@ enum EnumItem {
     AGED_BRIE(AGED_BRIE_ITEM, 0, 50, 1, false),
     BACKSTAGE(BACKSTAGE_PASSES_TO_A_TAFKAL_80_ETC_CONCERT, 0, 50, 1, false),
     SULFURAS(SULFURAS_HAND_OF_RAGNAROS, 80, 80, 0, true),
+    CONJURED(CONJURED_ITEM, 0, 50, -2, false),
     OTHER(null, 0, 50, -1, false);
 
     private final String name;
